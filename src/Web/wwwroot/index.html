@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Source Map Chain Auditor</title>
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Source Map Chain Auditor</h1>
+      <p>多级 source map 解码、链式追踪、修订候选与确定发布。</p>
+    </div>
+    <div class="pill" id="state">加载中</div>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>最终结论</h2>
+      <div id="summary"></div>
+      <details open>
+        <summary>每级输入、规则版本与事件顺序</summary>
+        <div id="stages"></div>
+        <h3>事件</h3>
+        <ol id="events"></ol>
+      </details>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>从生成位置回溯</h2>
+        <label>行 <input id="traceLine" type="number" value="0"></label>
+        <label>列 <input id="traceColumn" type="number" value="5"></label>
+        <select id="traceEncoding">
+          <option value="utf16">UTF-16 列</option>
+          <option value="unicode-scalars">Unicode 标量列</option>
+        </select>
+        <button onclick="trace()">追踪</button>
+        <pre id="traceResult"></pre>
+      </div>
+
+      <div class="card">
+        <h2>反向影响区间</h2>
+        <label>来源 <input id="sourcePath" value="original.js"></label>
+        <label>起行 <input id="startLine" type="number" value="0"></label>
+        <label>起列 <input id="startColumn" type="number" value="4"></label>
+        <label>止行 <input id="endLine" type="number" value="0"></label>
+        <label>止列 <input id="endColumn" type="number" value="5"></label>
+        <button onclick="reverse()">查找</button>
+        <pre id="reverseResult"></pre>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>修订候选</h2>
+      <div class="form-row">
+        <input id="revisionId" placeholder="修订 ID，如 rev-a">
+        <input id="revisionStage" value="intermediate">
+        <input id="revisionSegment" type="number" value="2">
+        <input id="revisionLine" type="number" value="0">
+        <input id="revisionColumn" type="number" value="4">
+        <button onclick="addRevision()">提交修订</button>
+      </div>
+      <div class="form-row">
+        <input id="pathRevisionId" placeholder="路径修订 ID">
+        <input id="pathRevisionStage" value="bundle">
+        <input id="pathRevisionRule" placeholder="sourceRoot:gen 或 source[0]:intermediate">
+        <button onclick="addPathRevision()">提交路径规则</button>
+      </div>
+      <div id="revisions"></div>
+      <div class="form-row">
+        <input id="mergeA" placeholder="修订 A">
+        <input id="mergeB" placeholder="修订 B">
+        <button onclick="mergeRevisions()">检查合并</button>
+        <button onclick="publish()">发布当前修订</button>
+      </div>
+      <pre id="revisionResult"></pre>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>幂等后台作业</h2>
+        <input id="jobKey" value="job-fingerprint-1">
+        <button onclick="recoverJob()">重试 / 恢复</button>
+        <pre id="jobs"></pre>
+      </div>
+      <div class="card">
+        <h2>导出再导入</h2>
+        <button onclick="exportThenImport()">导出并重新导入</button>
+        <pre id="exportResult"></pre>
+      </div>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
