@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <title>Source Map Chain Inspector</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Source Map Chain Inspector</h1>
+    <div>
+      <button id="btn-demo">载入演示项目</button>
+      <button id="btn-refresh">刷新</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>项目</h2>
+      <div class="row">
+        <input id="new-name" placeholder="新项目名">
+        <button id="btn-create">创建</button>
+      </div>
+      <ul id="project-list"></ul>
+    </section>
+
+    <section class="panel" id="project-panel" hidden>
+      <h2>项目详情 <code id="cur-project"></code></h2>
+      <div id="project-status"></div>
+
+      <details>
+        <summary>批量导入层级（原子提交，失败整体回滚）</summary>
+        <textarea id="import-json" rows="8" placeholder='[{"name":"original","files":[...]},...]'></textarea>
+        <button id="btn-import">导入层级</button>
+      </details>
+
+      <div class="row">
+        <button id="btn-compose">组合基准链</button>
+        <button id="btn-publish">发布当前组合</button>
+      </div>
+
+      <details open id="composition-box">
+        <summary>组合结果（最终结论）</summary>
+        <div id="composition-summary"></div>
+        <details>
+          <summary>支撑输入：每级指纹 / 规则版本</summary>
+          <pre id="composition-inputs"></pre>
+        </details>
+        <details>
+          <summary>校验问题</summary>
+          <ul id="issue-list"></ul>
+        </details>
+        <details>
+          <summary>组合条目</summary>
+          <div id="entry-list"></div>
+        </details>
+      </details>
+
+      <details open>
+        <summary>正向追踪：最终位置 → 原始来源</summary>
+        <div class="row">
+          <input id="trace-path" placeholder="dist/bundle.js" value="dist/bundle.js">
+          <input id="trace-line" type="number" placeholder="行" value="1">
+          <input id="trace-col" type="number" placeholder="列" value="0">
+          <button id="btn-trace">追踪</button>
+        </div>
+        <div id="trace-result"></div>
+      </details>
+
+      <details>
+        <summary>反向查找：原文区间 → 生成区间</summary>
+        <div class="row">
+          <input id="rev-level" type="number" placeholder="层级" value="0">
+          <input id="rev-path" placeholder="src/hello.ts" value="src/hello.ts">
+          <input id="rev-root" placeholder="sourceRoot(可空)">
+          <input id="rev-line" type="number" value="0">
+          <input id="rev-col" type="number" value="0">
+          <input id="rev-len" type="number" value="6">
+          <button id="btn-reverse">查找</button>
+        </div>
+        <div id="reverse-result"></div>
+      </details>
+
+      <details>
+        <summary>修订（候选分支，不改原始 map）</summary>
+        <div class="row">
+          <input id="rev-name" placeholder="修订名">
+        </div>
+        <textarea id="rev-edits" rows="5" placeholder='[{"type":"segment","level":2,"map":"dist/bundle.js","genLine":1,"genCol":0,"patch":{"srcLine":0,"srcCol":0}}]'>[]</textarea>
+        <div class="row">
+          <button id="btn-rev-create">创建修订</button>
+        </div>
+        <ul id="revision-list"></ul>
+        <div class="row">
+          <input id="merge-a" placeholder="修订A id">
+          <input id="merge-b" placeholder="修订B id">
+          <button id="btn-merge">合并</button>
+        </div>
+        <div id="merge-result"></div>
+      </details>
+
+      <details>
+        <summary>事件顺序</summary>
+        <ol id="event-list"></ol>
+      </details>
+
+      <details>
+        <summary>导出 / 导入</summary>
+        <div class="row">
+          <button id="btn-export">导出项目</button>
+          <button id="btn-import-project">从文本框导入</button>
+        </div>
+        <textarea id="export-json" rows="6"></textarea>
+      </details>
+    </section>
+  </main>
+
+  <div id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>

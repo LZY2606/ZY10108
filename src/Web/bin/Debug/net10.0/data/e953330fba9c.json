@@ -1,0 +1,354 @@
+{
+  "id": "e953330fba9c",
+  "name": "demo-bundle",
+  "status": "published",
+  "levels": [
+    {
+      "name": "original",
+      "files": [
+        {
+          "path": "src/hello.ts",
+          "sourceRoot": "",
+          "content": "export function hi() {\n  return \u0027hi\u0027;\n}\n",
+          "semantics": "utf16",
+          "hadBom": false,
+          "endsWithNewline": true,
+          "fingerprint": "ecafe0a377c6b65849bb98c863c83e3ab4423a73571aba762dd7c9df934093f4",
+          "identity": {
+            "sourceRoot": "",
+            "path": "src/hello.ts"
+          }
+        }
+      ],
+      "maps": []
+    },
+    {
+      "name": "transpiled",
+      "files": [
+        {
+          "path": "out/hello.js",
+          "sourceRoot": "",
+          "content": "export function hi() {\n  return \u0027hi\u0027;\n}\n",
+          "semantics": "utf16",
+          "hadBom": false,
+          "endsWithNewline": true,
+          "fingerprint": "ecafe0a377c6b65849bb98c863c83e3ab4423a73571aba762dd7c9df934093f4",
+          "identity": {
+            "sourceRoot": "",
+            "path": "out/hello.js"
+          }
+        }
+      ],
+      "maps": [
+        {
+          "generatedPath": "out/hello.js",
+          "generatedSourceRoot": "",
+          "map": {
+            "version": 3,
+            "file": "hello.js",
+            "sourceRoot": null,
+            "sources": [
+              "src/hello.ts"
+            ],
+            "sourcesContent": [
+              "export function hi() {\n  return \u0027hi\u0027;\n}\n"
+            ],
+            "names": [],
+            "mappings": "AAAA;AACA;AACA",
+            "semantics": "utf16",
+            "lines": [
+              [
+                {
+                  "genLine": 0,
+                  "genCol": 0,
+                  "srcIndex": 0,
+                  "srcLine": 0,
+                  "srcCol": 0,
+                  "nameIndex": -1
+                }
+              ],
+              [
+                {
+                  "genLine": 1,
+                  "genCol": 0,
+                  "srcIndex": 0,
+                  "srcLine": 1,
+                  "srcCol": 0,
+                  "nameIndex": -1
+                }
+              ],
+              [
+                {
+                  "genLine": 2,
+                  "genCol": 0,
+                  "srcIndex": 0,
+                  "srcLine": 2,
+                  "srcCol": 0,
+                  "nameIndex": -1
+                }
+              ]
+            ]
+          },
+          "generatedIdentity": {
+            "sourceRoot": "",
+            "path": "out/hello.js"
+          }
+        }
+      ]
+    },
+    {
+      "name": "bundle",
+      "files": [
+        {
+          "path": "dist/bundle.js",
+          "sourceRoot": "",
+          "content": "/* banner */\nexport function hi() {\n  return \u0027hi\u0027;\n}\n",
+          "semantics": "utf16",
+          "hadBom": false,
+          "endsWithNewline": true,
+          "fingerprint": "4e5aa8340229345747d8cb740b7cfa3a112e1c87f8fd35f5629918274f122eb8",
+          "identity": {
+            "sourceRoot": "",
+            "path": "dist/bundle.js"
+          }
+        }
+      ],
+      "maps": [
+        {
+          "generatedPath": "dist/bundle.js",
+          "generatedSourceRoot": "",
+          "map": {
+            "version": 3,
+            "file": "bundle.js",
+            "sourceRoot": null,
+            "sources": [
+              "out/hello.js"
+            ],
+            "sourcesContent": [
+              "export function hi() {\n  return \u0027hi\u0027;\n}\n"
+            ],
+            "names": [],
+            "mappings": ";AAAA;AACA;AACA",
+            "semantics": "utf16",
+            "lines": [
+              [],
+              [
+                {
+                  "genLine": 1,
+                  "genCol": 0,
+                  "srcIndex": 0,
+                  "srcLine": 0,
+                  "srcCol": 0,
+                  "nameIndex": -1
+                }
+              ],
+              [
+                {
+                  "genLine": 2,
+                  "genCol": 0,
+                  "srcIndex": 0,
+                  "srcLine": 1,
+                  "srcCol": 0,
+                  "nameIndex": -1
+                }
+              ],
+              [
+                {
+                  "genLine": 3,
+                  "genCol": 0,
+                  "srcIndex": 0,
+                  "srcLine": 2,
+                  "srcCol": 0,
+                  "nameIndex": -1
+                }
+              ]
+            ]
+          },
+          "generatedIdentity": {
+            "sourceRoot": "",
+            "path": "dist/bundle.js"
+          }
+        }
+      ]
+    }
+  ],
+  "revisions": [],
+  "compositions": {
+    "base": {
+      "digest": "270dd2ab4ee78637d08f6c629d8dc0ffd3bbf223586ac239ebf6c38d180822af",
+      "revisionId": "base",
+      "ruleVersion": 1,
+      "levelFingerprints": [
+        "bc713f43c9c945489646f5c6f26a31d1f15d3f94a38adc4084b94082d044f70a",
+        "529a9e295b8a05fb636ccc000b47f3052718248e36531fa365f44e757b13e9df",
+        "5f27dfbe568e9f0f468ca9bae1cf675e26b4bd3ce9430c60a75d2d8ee03983ee"
+      ],
+      "entries": [
+        {
+          "generatedPath": "dist/bundle.js",
+          "genLine": 1,
+          "genCol": 0,
+          "steps": [
+            {
+              "level": 1,
+              "path": "out/hello.js",
+              "sourceRoot": "",
+              "line": 0,
+              "col": 0
+            },
+            {
+              "level": 0,
+              "path": "src/hello.ts",
+              "sourceRoot": "",
+              "line": 0,
+              "col": 0
+            }
+          ],
+          "complete": true,
+          "breakLevel": null,
+          "breakReason": null
+        },
+        {
+          "generatedPath": "dist/bundle.js",
+          "genLine": 2,
+          "genCol": 0,
+          "steps": [
+            {
+              "level": 1,
+              "path": "out/hello.js",
+              "sourceRoot": "",
+              "line": 1,
+              "col": 0
+            },
+            {
+              "level": 0,
+              "path": "src/hello.ts",
+              "sourceRoot": "",
+              "line": 1,
+              "col": 0
+            }
+          ],
+          "complete": true,
+          "breakLevel": null,
+          "breakReason": null
+        },
+        {
+          "generatedPath": "dist/bundle.js",
+          "genLine": 3,
+          "genCol": 0,
+          "steps": [
+            {
+              "level": 1,
+              "path": "out/hello.js",
+              "sourceRoot": "",
+              "line": 2,
+              "col": 0
+            },
+            {
+              "level": 0,
+              "path": "src/hello.ts",
+              "sourceRoot": "",
+              "line": 2,
+              "col": 0
+            }
+          ],
+          "complete": true,
+          "breakLevel": null,
+          "breakReason": null
+        }
+      ],
+      "issues": [],
+      "createdAt": "2026-09-19T18:59:54.112965+00:00"
+    }
+  },
+  "publishedRevisionId": "base",
+  "events": [
+    {
+      "seq": 1,
+      "ts": "2026-09-19T18:59:54.080102+00:00",
+      "type": "ProjectCreated",
+      "data": {
+        "id": "e953330fba9c",
+        "name": "demo-bundle"
+      }
+    },
+    {
+      "seq": 2,
+      "ts": "2026-09-19T18:59:54.109569+00:00",
+      "type": "LevelsImported",
+      "data": {
+        "levels": [
+          {
+            "name": "original",
+            "files": 1,
+            "maps": 0,
+            "fingerprint": "bc713f43c9c945489646f5c6f26a31d1f15d3f94a38adc4084b94082d044f70a"
+          },
+          {
+            "name": "transpiled",
+            "files": 1,
+            "maps": 1,
+            "fingerprint": "529a9e295b8a05fb636ccc000b47f3052718248e36531fa365f44e757b13e9df"
+          },
+          {
+            "name": "bundle",
+            "files": 1,
+            "maps": 1,
+            "fingerprint": "5f27dfbe568e9f0f468ca9bae1cf675e26b4bd3ce9430c60a75d2d8ee03983ee"
+          }
+        ]
+      }
+    },
+    {
+      "seq": 3,
+      "ts": "2026-09-19T18:59:54.112198+00:00",
+      "type": "JobScheduled",
+      "data": {
+        "id": "624ad4e1426a",
+        "kind": "compose",
+        "revisionId": "base"
+      }
+    },
+    {
+      "seq": 4,
+      "ts": "2026-09-19T18:59:54.112488+00:00",
+      "type": "JobStarted",
+      "data": {
+        "id": "624ad4e1426a"
+      }
+    },
+    {
+      "seq": 5,
+      "ts": "2026-09-19T18:59:54.11777+00:00",
+      "type": "JobCompleted",
+      "data": {
+        "id": "624ad4e1426a",
+        "digest": "270dd2ab4ee78637d08f6c629d8dc0ffd3bbf223586ac239ebf6c38d180822af",
+        "entries": 3,
+        "issues": 0
+      }
+    },
+    {
+      "seq": 6,
+      "ts": "2026-09-19T18:59:54.120128+00:00",
+      "type": "CompositionPublished",
+      "data": {
+        "revisionId": "base",
+        "digest": "270dd2ab4ee78637d08f6c629d8dc0ffd3bbf223586ac239ebf6c38d180822af"
+      }
+    }
+  ],
+  "operations": {},
+  "jobs": [
+    {
+      "id": "624ad4e1426a",
+      "kind": "compose",
+      "status": "completed",
+      "revisionId": "base",
+      "createdAt": "2026-09-19T18:59:54.112162+00:00",
+      "finishedAt": "2026-09-19T18:59:54.117722+00:00"
+    }
+  ],
+  "nextSeq": 7,
+  "ruleVersion": 1
+}
